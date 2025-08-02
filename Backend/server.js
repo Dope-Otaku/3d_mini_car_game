@@ -2,6 +2,11 @@ const express = require('express')
 
 const app = express()
 
+app.use((req, res, next)=>{
+    console.log("we are using a middleware")
+    next()
+})
+
 app.get("/",(req, res)=>{
     res.send("hey how are yaa!")
 })
