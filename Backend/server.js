@@ -15,6 +15,11 @@ app.get("/status",(req, res)=>{
     res.send("we are on status page!")
 })
 
+app.get("/status/:username",(req, res)=>{
+    let name = req.params.username
+    res.send(`we are on status page! and your name is ${name}`)
+})
+
 app.listen(3000, ()=>{
     console.log("server starting on port no: 3000")
 })
