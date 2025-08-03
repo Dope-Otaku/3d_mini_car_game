@@ -32,12 +32,19 @@ app.get("/status",(req, res)=>{
 
 app.get("/create",async(req, res)=>{
     const resCreate = await userModel.create({
-        username: "souvik",
-        name: "raj",
-        age: 1
+        username: "sonali",
+        name: "guuu",
+        age: 2
     })
     res.send(resCreate)
 })
+
+app.get("/allusers",async(req, res)=>{
+    const allusers = await userModel.find()
+    res.send(allusers)
+})
+
+
 
 app.get("/api/data",(req, res)=>{
     // res.send("we are on status page!")
