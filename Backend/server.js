@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use((req, res, next)=>{
-    console.log("we are using a middleware")
+    console.log("we are using a middleware and you just sent a request to backend")
     next()
 })
 
@@ -48,6 +48,11 @@ app.get("/allusers",async(req, res)=>{
 app.get("/findone",async(req, res)=>{
     const findone = await userModel.findOne({username: "souvik"})
     res.send(findone)
+})
+
+app.get("/delete",async(req, res)=>{
+    const del = await userModel.findOneAndDelete({username: "sonali"})
+    res.send(del)
 })
 
 
