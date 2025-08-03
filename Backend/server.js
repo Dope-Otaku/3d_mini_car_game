@@ -1,12 +1,17 @@
 const express = require('express')
 const cors = require('cors')
 const mongoDBConnection  = require('./dbConnection');
+const userModel = require('./dbSchema')
 
 const app = express()
 
 require('dotenv').config();
 
+
+//initialized mongoDB
 mongoDBConnection()
+
+
 
 app.use(cors())
 app.use(express.json())
@@ -23,6 +28,15 @@ app.get("/",(req, res)=>{
 
 app.get("/status",(req, res)=>{
     res.send("we are on status page!")
+})
+
+app.get("/create",async(req, res)=>{
+    const resCreate = await userModel.create({
+        username: "souvik",
+        name: "raj",
+        age: 1
+    })
+    res.send(resCreate)
 })
 
 app.get("/api/data",(req, res)=>{
