@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoDBConnection  = require('./dbConnection');
 const userModel = require('./dbSchema')
 const session = require('express-session')
+const cookie = require('cookie-parser')
 
 const app = express()
 
@@ -29,8 +30,19 @@ app.use((req, res, next)=>{
 
 app.get("/",(req, res)=>{
     req.session.active = true
+    res.cookie("userActive", "true")
     res.send("hey how are yaa!")
     // res.render('Home', {name:name})
+})
+
+app.get("/read",(req, res)=>{
+    // req.session.active = true
+    // res.cookie("userActive", "true")
+    // res.send("hey how are yaa!")
+    // res.render('Home', {name:name})
+    if(req.cookies){
+        res.json({cookie: req.cookies})
+    }
 })
 
 app.get("/status",(req, res)=>{
