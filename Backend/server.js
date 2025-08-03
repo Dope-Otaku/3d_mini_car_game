@@ -45,6 +45,12 @@ app.get("/allusers",async(req, res)=>{
 })
 
 
+app.get("/findone",async(req, res)=>{
+    const findone = await userModel.findOne({username: "souvik"})
+    res.send(findone)
+})
+
+
 
 app.get("/api/data",(req, res)=>{
     // res.send("we are on status page!")
