@@ -1,7 +1,12 @@
 const express = require('express')
 const cors = require('cors')
+const mongoDBConnection  = require('./dbConnection');
 
 const app = express()
+
+require('dotenv').config();
+
+mongoDBConnection()
 
 app.use(cors())
 app.use(express.json())
@@ -30,6 +35,7 @@ app.get("/status/:username",(req, res)=>{
     // res.send(`we are on status page! and your name is ${name}`)
     // res.render('Home', {name:name})
 })
+
 
 app.listen(3000, ()=>{
     console.log("server starting on port no: 3000")
