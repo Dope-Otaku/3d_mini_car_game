@@ -21,4 +21,11 @@ const mongoDBConnection = async() =>{
     }
 }
 
+
+const userSchema = mongoose.Schema({
+    username: String,
+    name: String,
+    age: Number
+})
+
 module.exports =  mongoDBConnection ;
