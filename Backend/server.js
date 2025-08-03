@@ -51,6 +51,11 @@ app.get("/api/read",(req, res)=>{
     }
 })
 
+app.get("/api/clearcookie",(req, res)=>{
+    res.clearCookie("userActive")
+    res.send("cookie deleted")
+})
+
 app.get("/status",(req, res)=>{
     // console.log(req.session)
     if(req.session.active === true){
