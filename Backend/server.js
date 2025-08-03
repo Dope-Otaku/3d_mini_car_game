@@ -6,6 +6,8 @@ app.use((req, res, next)=>{
     console.log("we are using a middleware")
     next()
 })
+app.set("view engine", "ejs")
+app.use(express.static("./public"))
 
 app.get("/",(req, res)=>{
     res.send("hey how are yaa!")
