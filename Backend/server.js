@@ -38,7 +38,16 @@ app.get("/status",(req, res)=>{
     if(req.session.active === true){
         res.send("you are fu*ked!")
     }
-    res.send("you are not active")
+    
+})
+
+app.get("/removestatus",(req, res)=>{
+    // console.log(req.session)
+    req.session.destroy((err)=>{
+        if(err) throw Error;
+        res.send("you are saved in the name of jesus!")
+    })
+    
 })
 
 app.get("/create",async(req, res)=>{
