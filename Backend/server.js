@@ -1,6 +1,10 @@
 const express = require('express')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors())
+app.use(express.json())
 
 app.use((req, res, next)=>{
     console.log("we are using a middleware")
@@ -14,6 +18,11 @@ app.get("/",(req, res)=>{
 
 app.get("/status",(req, res)=>{
     res.send("we are on status page!")
+})
+
+app.get("/api/data",(req, res)=>{
+    // res.send("we are on status page!")
+    res.json({name: "souvik test name 1"})
 })
 
 app.get("/status/:username",(req, res)=>{
