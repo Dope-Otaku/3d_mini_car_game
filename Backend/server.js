@@ -6,11 +6,10 @@ app.use((req, res, next)=>{
     console.log("we are using a middleware")
     next()
 })
-app.set("view engine", "ejs")
-app.use(express.static("./public"))
 
 app.get("/",(req, res)=>{
     res.send("hey how are yaa!")
+    // res.render('Home', {name:name})
 })
 
 app.get("/status",(req, res)=>{
@@ -19,7 +18,8 @@ app.get("/status",(req, res)=>{
 
 app.get("/status/:username",(req, res)=>{
     let name = req.params.username
-    res.send(`we are on status page! and your name is ${name}`)
+    // res.send(`we are on status page! and your name is ${name}`)
+    // res.render('Home', {name:name})
 })
 
 app.listen(3000, ()=>{
