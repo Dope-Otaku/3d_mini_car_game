@@ -3,7 +3,7 @@ const cors = require('cors')
 const mongoDBConnection  = require('./dbConnection');
 const userModel = require('./dbSchema')
 const session = require('express-session')
-const cookie = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 
@@ -16,6 +16,7 @@ mongoDBConnection()
 
 
 app.use(cors())
+app.use(cookieParser())
 app.use(express.json())
 app.use(session({
     resave: false,
@@ -35,13 +36,18 @@ app.get("/",(req, res)=>{
     // res.render('Home', {name:name})
 })
 
-app.get("/read",(req, res)=>{
+app.get("/api/read",(req, res)=>{
     // req.session.active = true
     // res.cookie("userActive", "true")
     // res.send("hey how are yaa!")
     // res.render('Home', {name:name})
     if(req.cookies){
         res.json({cookie: req.cookies})
+        console.log(req.cookies)
+        // res.send(req.cookies)
+    }
+    else{
+        res.send("no cookie found!")
     }
 })
 
