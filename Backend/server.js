@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoDBConnection  = require('./dbConnection');
 const userModel = require('./dbSchema')
+const session = require('express-session')
 
 const app = express()
 
@@ -15,6 +16,11 @@ mongoDBConnection()
 
 app.use(cors())
 app.use(express.json())
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "hello"
+}))
 
 app.use((req, res, next)=>{
     console.log("we are using a middleware and you just sent a request to backend")
@@ -22,12 +28,17 @@ app.use((req, res, next)=>{
 })
 
 app.get("/",(req, res)=>{
+    req.session.active = true
     res.send("hey how are yaa!")
     // res.render('Home', {name:name})
 })
 
 app.get("/status",(req, res)=>{
-    res.send("we are on status page!")
+    // console.log(req.session)
+    if(req.session.active === true){
+        res.send("you are fu*ked!")
+    }
+    res.send("you are not active")
 })
 
 app.get("/create",async(req, res)=>{
