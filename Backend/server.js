@@ -25,7 +25,7 @@ app.use(session({
 }))
 
 app.use((req, res, next)=>{
-    console.log("we are using a middleware and you just sent a request to backend")
+    console.log("we are using a middleware and you just sent a request to backed")
     next()
 })
 
