@@ -76,7 +76,7 @@ app.get("/removestatus",(req, res)=>{
 app.get("/create",async(req, res)=>{
     const resCreate = await userModel.create({
         username: "sonali",
-        name: "guuu",
+        name: "new",
         age: 2
     })
     res.send(resCreate)
