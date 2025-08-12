@@ -4,6 +4,7 @@ const mongoDBConnection  = require('./dbConnection');
 const userModel = require('./dbSchema')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const flash = require("connect-flash")
 
 const app = express()
 
@@ -23,6 +24,8 @@ app.use(session({
     saveUninitialized: false,
     secret: "hello"
 }))
+app.use(flash())
+
 
 app.use((req, res, next)=>{
     console.log("we are using a middleware and you just sent a request to backed")
