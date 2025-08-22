@@ -12,7 +12,7 @@ require('dotenv').config();
 
 
 //initialized mongoDB
-mongoDBConnection()
+mongoDBConnection() //db
 
 
 
