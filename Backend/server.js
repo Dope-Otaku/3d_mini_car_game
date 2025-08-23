@@ -12,8 +12,7 @@ require('dotenv').config();
 
 
 //initialized mongoDB
-mongoDBConnection() //db
-
+mongoDBConnection() 
 
 
 app.use(cors())
@@ -28,7 +27,7 @@ app.use(flash())
 
 
 app.use((req, res, next)=>{
-    console.log("we are using a middleware and you just sent a request to backed")
+    console.log("we are using a middleware and you just sent a request to backed | Test Message")
     next()
 })
 
