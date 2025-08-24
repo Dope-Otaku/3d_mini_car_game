@@ -34,7 +34,7 @@ app.use((req, res, next)=>{
 app.get("/",(req, res)=>{
     req.session.active = true
     res.cookie("userActive", "true")
-    res.send("hey how are yaa!")
+    res.send("hey how are you!")
     // res.render('Home', {name:name})
 })
 
